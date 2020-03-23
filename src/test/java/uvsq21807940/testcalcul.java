@@ -33,4 +33,18 @@ public class testcalcul {
 			double expected=1600;
 			assertTrue(expected==V.calculSalaire());
 		}
-    }
+	 
+	 @Test
+	    public void createManager(){
+	        Manager m = new Manager("jack paris", 2);
+	        assertTrue(m != null);
+	    }
+	 @Test
+		public void SalaireManager() {
+			Manager M= new Manager("mich milan",0);
+			M.setNb_ordre(2);
+			double expected=1700;
+			assertEquals(expected,M.calculSalaire(),0);
+		}
+	 
+}
