@@ -1,0 +1,165 @@
+<? xml version = " 1.0 " ?>
+<! Module DOCTYPE  PUBLIC
+          "- // Checkstyle // DTD Checkstyle Configuration 1.3 // FR"
+          "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<! -
+  Configuration Checkstyle qui vérifie les conventions de codage du soleil à partir de:
+    - la spécification du langage Java à
+      https://docs.oracle.com/javase/specs/jls/se11/html/index.html
+    - les conventions du code Sun à https://www.oracle.com/technetwork/java/codeconvtoc-136057.html
+    - les directives Javadoc à
+      https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html
+    - la documentation JDK Api https://docs.oracle.com/en/java/javase/11/
+    - quelques bonnes pratiques
+  Checkstyle est très configurable. Assurez-vous de lire la documentation sur
+  http://checkstyle.sourceforge.net (ou dans votre distribution téléchargée).
+  La plupart des chèques sont configurables, assurez-vous de consulter la documentation.
+  Pour désactiver complètement une vérification, il suffit de la commenter ou de la supprimer du fichier.
+  Enfin, il vaut la peine de lire la documentation.
+->
+
+< nom du module  = " Vérificateur " >
+    <! -
+        Si vous définissez la propriété basedir ci-dessous, tous les fichiers signalés
+        les noms seront relatifs au répertoire spécifié. Voir
+        https://checkstyle.org/5.x/config.html#Checker
+        <property name = "basedir" value = "$ {basedir}" />
+    ->
+
+    < property  name = " fileExtensions "  value = " java, properties, xml " />
+
+    <! - Exclut tous les fichiers 'module-info.java'               ->
+    <! - Voir https://checkstyle.org/config_filefilters.html ->
+    < module  name = " BeforeExecutionExclusionFileFilter " >
+        < property  name = " fileNamePattern "  value = " module \ -info \ .java $ " />
+    </ module >
+
+    <! - Vérifie qu'un fichier package-info.java existe pour chaque package.     ->
+    <! - Voir http://checkstyle.sourceforge.net/config_javadoc.html#JavadocPackage ->
+    < nom du module  = " JavadocPackage " />
+
+    <! - Vérifie si les fichiers se terminent par une nouvelle ligne.                        ->
+    <! - Voir http://checkstyle.sourceforge.net/config_misc.html#NewlineAtEndOfFile ->
+    < nom du module  = " NewlineAtEndOfFile " />
+
+    <! - Vérifie que les fichiers de propriétés contiennent les mêmes clés.         ->
+    <! - Voir http://checkstyle.sourceforge.net/config_misc.html#Translation ->
+    < module  name = " Translation " />
+
+    <! - Vérifie les violations de taille.                    ->
+    <! - Voir http://checkstyle.sourceforge.net/config_sizes.html ->
+    < nom du module  = " FileLength " />
+
+    <! - Vérifie les espaces blancs                                ->
+    <! - Voir http://checkstyle.sourceforge.net/config_whitespace.html ->
+    < nom du module  = " FileTabCharacter " />
+
+    <! - Divers autres contrôles.                   ->
+    <! - Voir http://checkstyle.sourceforge.net/config_misc.html ->
+    < nom du module  = " RegexpSingleline " >
+       < nom de la propriété  = " format " value = " \ s + $ " /> 
+       < nom de la propriété  = " minimum " value = " 0 " /> 
+       < nom de la propriété  = " maximum " value = " 0 " /> 
+       < property  name = " message "  value = "La ligne comporte des espaces de fin. " />
+    </ module >
+
+    <! - Vérifie les en-têtes                                 ->
+    <! - Voir http://checkstyle.sourceforge.net/config_header.html    ->
+    <! - <module name = "Header"> ->
+    <! -    <property name = "headerFile" value = "$ {checkstyle.header.file}" /> ->
+    <! -    <property name = "fileExtensions" value = "java" /> ->
+    <! - </module> ->
+
+    < nom du module  = " TreeWalker " >
+
+        <! - Vérifie les commentaires Javadoc.                     ->
+        <! - Voir http://checkstyle.sourceforge.net/config_javadoc.html ->
+        < nom du module  = " JavadocMethod " />
+        < nom du module  = " JavadocType " />
+        < nom du module  = " JavadocVariable " />
+        < nom du module  = " JavadocStyle " />
+
+        <! - Vérifie les conventions de dénomination.                  ->
+        <! - Voir http://checkstyle.sourceforge.net/config_naming.html ->
+        < nom du module  = " ConstantName " />
+        < nom du module  = " LocalFinalVariableName " />
+        < nom du module  = " LocalVariableName " />
+        < nom du module  = " MemberName " />
+        < module  name = " MethodName " />
+        < nom du module  = " PackageName " />
+        < nom du module  = " ParameterName " />
+        < nom du module  = " StaticVariableName " />
+        < nom du module  = " TypeName " />
+
+        <! - Vérifie les importations                               ->
+        <! - Voir http://checkstyle.sourceforge.net/config_import.html ->
+        < nom du module  = " EviterStarImport " />
+        < module  name = " IllegalImport " /> <! - par défaut à sun. * packages ->
+        < nom du module  = " RedundantImport " />
+        < module  name = " UnusedImports " >
+            < property  name = " processJavadoc "  value = " false " />
+        </ module >
+
+        <! - Vérifie les violations de taille.                    ->
+        <! - Voir http://checkstyle.sourceforge.net/config_sizes.html ->
+        < nom du module  = " LineLength " />
+        < module  name = " MethodLength " />
+        < nom du module  = " ParameterNumber " />
+
+        <! - Vérifie les espaces blancs                                ->
+        <! - Voir http://checkstyle.sourceforge.net/config_whitespace.html ->
+        < nom du module  = " EmptyForIteratorPad " />
+        < module  name = " GenericWhitespace " />
+        < nom du module  = " MethodParamPad " />
+        < module  name = " NoWhitespaceAfter " />
+        < nom du module  = " NoWhitespaceBefore " />
+        < nom du module  = " OperatorWrap " />
+        < module  name = " ParenPad " />
+        < module  name = " TypecastParenPad " />
+        < module  name = " WhitespaceAfter " />
+        < nom du module  = " WhitespaceAround " />
+
+        <! - Vérifications des modificateurs                                     ->
+        <! - Voir http://checkstyle.sourceforge.net/config_modifiers.html ->
+        < nom du module  = " ModifierOrder " />
+        < nom du module  = " RedundantModifier " />
+
+        <! - Recherche les blocs. Vous savez, ces {}          ->
+        <! - Voir http://checkstyle.sourceforge.net/config_blocks.html ->
+        < nom du module  = " Eviter les blocs imbriqués " />
+        < nom du module  = " EmptyBlock " />
+        < nom du module  = " LeftCurly " />
+        < module  name = " NeedBraces " />
+        < module  name = " RightCurly " />
+
+        <! - Recherche les problèmes de codage courants                ->
+        <! - Voir http://checkstyle.sourceforge.net/config_coding.html ->
+        < nom du module  = " EmptyStatement " />
+        < nom du module  = " EqualsHashCode " />
+        < nom du module  = " HiddenField " />
+        < nom du module  = " IllegalInstantiation " />
+        < nom du module  = " InnerAssignment " />
+        < module  name = " MagicNumber " />
+        < module  name = " MissingSwitchDefault " />
+        < nom du module  = " SimplifyBooleanExpression " />
+        < module  name = " SimplifyBooleanReturn " />
+
+        <! - Vérifie la conception des classes                          ->
+        <! - Voir http://checkstyle.sourceforge.net/config_design.html ->
+        < nom du module  = " DesignForExtension " />
+        < module  name = " FinalClass " />
+        < nom du module  = " HideUtilityClassConstructor " />
+        < nom du module  = " InterfaceIsType " />
+        < nom du module  = " VisibilityModifier " />
+
+        <! - Divers autres contrôles.                   ->
+        <! - Voir http://checkstyle.sourceforge.net/config_misc.html ->
+        < nom du module  = " ArrayTypeStyle " />
+        < nom du module  = " FinalParameters " />
+        < nom du module  = " TodoComment " />
+        < nom du module  = " UpperEll " />
+
+    </ module >
+
+</ module >
